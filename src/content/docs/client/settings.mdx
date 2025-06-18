@@ -1,0 +1,216 @@
+---
+title: Relay Settings
+description: Configure Relay to match your preferences with these available settings
+---
+
+Customize your Relay experience with these configurable settings. Modify themes, appearance, audio settings, shortcuts, and more to personalize your communication experience.
+
+<Tabs defaultTab="general">
+  <TabList>
+    <TabTrigger id="general">General</TabTrigger>
+    <TabTrigger id="user">User</TabTrigger>
+    <TabTrigger id="audio">Audio & Voice</TabTrigger>
+    <TabTrigger id="shortcuts">Shortcuts</TabTrigger>
+  </TabList>
+
+  <TabContent id="general">
+    ## General Settings
+
+    Configure the overall appearance and behavior of the Relay interface.
+
+    <Table>
+        <TableHeader>
+            <TableRow>
+                <TableHead>Setting</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+                <TableCell>Theme</TableCell>
+                <TableCell>System</TableCell>
+                <TableCell>
+                    Choose between Light, Dark, or System color theme
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Positive Accent Color</TableCell>
+                <TableCell>#74c4c9</TableCell>
+                <TableCell>
+                    Choose the positive accent color for the application
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Warning Accent Color</TableCell>
+                <TableCell>#f6b93b</TableCell>
+                <TableCell>
+                    Choose the warning accent color for the application
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Negative Accent Color</TableCell>
+                <TableCell>#f72650</TableCell>
+                <TableCell>
+                    Choose the negative accent color for the application
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Window Controls Style</TableCell>
+                <TableCell>Custom</TableCell>
+                <TableCell>
+                    Choose between custom or traditional window control icons
+                </TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+
+  </TabContent>
+
+  <TabContent id="user">
+    ## User Settings
+
+    Configure your personal profile and identity within Relay.
+
+    <Table>
+        <TableHeader>
+            <TableRow>
+                <TableHead>Setting</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+                <TableCell>Username</TableCell>
+                <TableCell>Empty</TableCell>
+                <TableCell>Your display name in the application</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Profile Picture</TableCell>
+                <TableCell>None</TableCell>
+                <TableCell>
+                    Choose an image to use as your profile picture
+                </TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+
+  </TabContent>
+
+  <TabContent id="audio">
+    ## Audio & Voice Settings
+
+    Manage your audio devices, volumes, and voice detection settings.
+
+    <Table>
+        <TableHeader>
+            <TableRow>
+                <TableHead>Setting</TableHead>
+                <TableHead>Default</TableHead>
+                <TableHead>Description</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+                <TableCell>Input Device</TableCell>
+                <TableCell>Default</TableCell>
+                <TableCell>Select your microphone input device</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Output Device</TableCell>
+                <TableCell>Default</TableCell>
+                <TableCell>Select your audio output device</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Input Volume</TableCell>
+                <TableCell>100%</TableCell>
+                <TableCell>Adjust your microphone input volume</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Output Volume</TableCell>
+                <TableCell>100%</TableCell>
+                <TableCell>Adjust the voice chat output volume</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Voice Activation Threshold</TableCell>
+                <TableCell>-50 dB</TableCell>
+                <TableCell>
+                    Set the sensitivity for voice activation. Lower values are more
+                    sensitive
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Push to Talk Mode</TableCell>
+                <TableCell>Disabled</TableCell>
+                <TableCell>
+                    Enable push-to-talk instead of voice activation
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Test Microphone</TableCell>
+                <TableCell>N/A</TableCell>
+                <TableCell>
+                    Test your microphone input levels with voice activation
+                    threshold visualization
+                </TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+
+  </TabContent>
+
+  <TabContent id="shortcuts">
+    ## Keyboard Shortcuts
+
+    Customize keyboard shortcuts for quick access to Relay features.
+
+    <Table>
+        <TableHeader>
+            <TableRow>
+                <TableHead>Action</TableHead>
+                <TableHead>Default Shortcut</TableHead>
+                <TableHead>Description</TableHead>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+            <TableRow>
+                <TableCell>Toggle Sidebar</TableCell>
+                <TableCell>Ctrl+B</TableCell>
+                <TableCell>Show or hide the sidebar</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Select All</TableCell>
+                <TableCell>Ctrl+A</TableCell>
+                <TableCell>Select all items in the current context</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Select None</TableCell>
+                <TableCell>Ctrl+D</TableCell>
+                <TableCell>Deselect all selected items</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Select Invert</TableCell>
+                <TableCell>Ctrl+I</TableCell>
+                <TableCell>Invert the current selection</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Toggle Mute</TableCell>
+                <TableCell>Ctrl+M</TableCell>
+                <TableCell>Mute or unmute your microphone</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Toggle Deafen</TableCell>
+                <TableCell>Ctrl+Shift+M</TableCell>
+                <TableCell>Toggle deafen (mute input and output)</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>Push to Talk</TableCell>
+                <TableCell>Space</TableCell>
+                <TableCell>Hold to activate push-to-talk</TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+
+  </TabContent>
+</Tabs>

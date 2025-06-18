@@ -1,0 +1,127 @@
+---
+title: "Relay Server"
+description: "Go server with WebSocket communication and user management"
+---
+
+The Relay Server is a backend application built with Go, providing real-time communication capabilities, user management, and file handling. It serves as the central hub for Relay client connections and manages channels, messages, voice communication, and user permissions.
+
+## Overview
+
+Built with Go, the Relay Server handles multiple concurrent connections while maintaining message delivery and voice communication. It features a REST API alongside WebSocket connections.
+
+## Key Features
+
+### High Performance
+
+-   Written in Go for concurrency support
+-   WebSocket handling for real-time communication
+-   Database queries with GORM
+-   Connection pooling and resource management
+
+### Real-time Communication
+
+-   WebSocket-based message delivery
+-   Voice channel management
+-   User presence and typing indicators
+-   Message reactions and status updates
+
+### Data Management
+
+-   SQLite database with migrations
+-   Message storage and retrieval
+-   File upload and management system
+-   User data storage
+
+### User & Permission Management
+
+-   Role-based access control (RBAC)
+-   Server registration system
+-   User authentication
+-   Channel permissions and moderation tools
+
+### Security
+
+-   Ed25519 cryptographic authentication
+-   File upload validation
+-   Rate limiting and protection
+-   HTTPS/WSS encryption for communications
+
+## Architecture
+
+The Relay Server is built using Go technologies:
+
+-   **Go**: Backend language
+-   **Gin**: HTTP web framework
+-   **GORM**: ORM for database operations
+-   **SQLite**: Embedded database
+-   **Gorilla WebSocket**: WebSocket implementation
+-   **JWT**: JSON Web Tokens for authentication
+
+## Database Schema
+
+The server uses a database schema to manage:
+
+-   **Users**: Authentication, profiles, and preferences
+-   **Servers**: Multi-server support with settings
+-   **Channels**: Text and voice channels with permissions
+-   **Messages**: Message storage with metadata
+-   **Files**: File storage and access control
+-   **Roles**: Permission-based user roles and capabilities
+
+## Deployment Options
+
+### Available Deployment Methods
+
+-   **[Quick Start](/docs/server/getting-started)**: Get your server running locally
+-   **[Docker Deployment](/docs/server/docker)**: Deploy using Docker containers
+-   **[Linux Server](/docs/server/linux-deployment)**: Deploy on Linux servers with systemd integration
+-   **[Cloud Deployment](/docs/server/cloud-deployment)**: Deploy to cloud providers
+
+## Configuration
+
+The server is configurable through environment variables and configuration files:
+
+### Core Settings
+
+-   **Database**: Connection string and migration settings
+-   **Authentication**: JWT secrets and token expiration
+-   **File Storage**: Upload limits and storage locations
+-   **Network**: Port binding and CORS configuration
+
+### Security Settings
+
+-   **Rate Limiting**: Request limits and protection
+-   **Encryption**: TLS certificates and secure connections
+-   **Validation**: Input validation and sanitization rules
+-   **Logging**: Audit trails and monitoring
+
+## Administration
+
+Administrative tools for managing your Relay server:
+
+### Management Areas
+
+-   **[User Management](/docs/server/user-management)**: Manage users, roles, and permissions
+-   **[Monitoring](/docs/server/monitoring)**: Server health, metrics, and logging
+-   **[Maintenance](/docs/server/maintenance)**: Backups, updates, and maintenance tasks
+
+## Development
+
+Contribute to the Relay server development:
+
+-   [Source Code](https://github.com/RelayCore/relay-server)
+-   [Building from Source](/docs/server/building)
+-   [Contributing Guidelines](/docs/server/contributing)
+-   [API Reference](/docs/server/api-reference)
+
+## Support
+
+Get help with your Relay server deployment:
+
+-   [GitHub Issues](https://github.com/RelayCore/relay-server/issues) - Report bugs or request features
+-   [Deployment Guides](/docs/server/getting-started) - Step-by-step deployment instructions
+-   [Troubleshooting](/docs/server/troubleshooting) - Common issues and solutions
+
+---
+
+Ready to deploy your own Relay server? [Start with our quick setup guide](/docs/server/getting-started) and have your server running in minutes!

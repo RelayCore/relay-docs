@@ -1,0 +1,675 @@
+---
+title: Relay Server API Reference
+description: Complete overview of Relay server API endpoints for authentication, messaging, voice chat, and server management
+---
+
+This page provides a comprehensive overview of available API endpoints in the Relay server. All endpoints use your server's base URL (e.g., `http://localhost:8080` or `https://your-relay-server.com`).
+
+<Callout type="info">
+    Most endpoints require authentication via the public key sent to the /join
+    endpoint. Public endpoints are clearly marked below.
+</Callout>
+
+<Tabs defaultTab="auth">
+  <TabList>
+    <TabTrigger id="auth">Authentication</TabTrigger>
+    <TabTrigger id="messaging">Messaging</TabTrigger>
+    <TabTrigger id="channels">Channels</TabTrigger>
+    <TabTrigger id="voice">Voice Chat</TabTrigger>
+    <TabTrigger id="users">User Management</TabTrigger>
+    <TabTrigger id="moderation">Moderation</TabTrigger>
+    <TabTrigger id="server">Server Management</TabTrigger>
+  </TabList>
+
+  <TabContent id="auth">
+    ## Authentication & Server Access
+
+    Handle user authentication, server joining, and invite management.
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Auth</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/join`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Public</TableCell>
+          <TableCell>Join server with invite code</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/auth`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Public</TableCell>
+          <TableCell>Authenticate with server</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/server`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Public</TableCell>
+          <TableCell>Get server metadata</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/server/tech`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Required</TableCell>
+          <TableCell>Get technical server info</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/icon`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Public</TableCell>
+          <TableCell>Get server icon</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/ws`</TableCell>
+          <TableCell>WebSocket</TableCell>
+          <TableCell>Required</TableCell>
+          <TableCell>Real-time communication</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+    ### Invite Management
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Permission</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/create-invite`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Create Invites</TableCell>
+          <TableCell>Create new invite code</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/invites`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Manage Invites</TableCell>
+          <TableCell>List all invites</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/invites/delete`</TableCell>
+          <TableCell>DELETE</TableCell>
+          <TableCell>Manage Invites</TableCell>
+          <TableCell>Delete invite code</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+  </TabContent>
+
+  <TabContent id="messaging">
+    ## Messaging & Content
+
+    Send, edit, delete, and search messages across channels.
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Permission</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/messages/send`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Send Messages</TableCell>
+          <TableCell>Send message to channel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/messages/delete`</TableCell>
+          <TableCell>DELETE</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>Delete your message</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/messages/edit`</TableCell>
+          <TableCell>PUT</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>Edit your message</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/messages/pin`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>Pin message to channel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/messages/unpin`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>Unpin message from channel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/messages/pinned`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>Get pinned messages</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/messages/search`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>Search messages</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/messages/replies`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>Get message replies</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+    ### File Attachments
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/uploads/*`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Access uploaded files</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/attachments`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>List all attachments</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/attachments/stats`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Get attachment statistics</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+  </TabContent>
+
+  <TabContent id="channels">
+    ## Channels & Groups
+
+    Manage channels, groups, and channel-specific permissions.
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Permission</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/channels`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>List all channels</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/channels/create`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Create Channels</TableCell>
+          <TableCell>Create new channel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/channels/update`</TableCell>
+          <TableCell>PUT</TableCell>
+          <TableCell>Manage Channels</TableCell>
+          <TableCell>Update channel settings</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/channels/delete`</TableCell>
+          <TableCell>DELETE</TableCell>
+          <TableCell>Manage Channels</TableCell>
+          <TableCell>Delete channel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/channels/messages`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>Get channel message history</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/groups/create`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Create Channels</TableCell>
+          <TableCell>Create channel group</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+    ### Channel Permissions
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/channels/permissions`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Get channel permissions</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/channels/permissions/set`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Set channel permission</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/channels/permissions/delete`</TableCell>
+          <TableCell>DELETE</TableCell>
+          <TableCell>Remove channel permission</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+  </TabContent>
+
+  <TabContent id="voice">
+    ## Voice Chat
+
+    Manage voice channel participation and audio settings.
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/voice/join`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Join voice channel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/voice/leave`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Leave voice channel</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/voice/state`</TableCell>
+          <TableCell>PUT</TableCell>
+          <TableCell>Update voice state (mute/deafen)</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/voice/participants`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Get voice channel participants</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/voice/rooms`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>List active voice channels</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+  </TabContent>
+
+  <TabContent id="users">
+    ## User Management
+
+    Manage user profiles, roles, and server membership.
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/users`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>List all server users</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/user`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Get user information</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/user/nickname`</TableCell>
+          <TableCell>PUT</TableCell>
+          <TableCell>Update user nickname</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/user/profile-picture`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Upload profile picture</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/user/leave`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Leave the server</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+    ### User Tags & Notifications
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/user/tags`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Get user mentions/tags</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/user/tags/read`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Mark tag as read</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/user/tags/read-all`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Mark all tags as read</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/user/tags/unread-count`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Get unread tag count</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+    ### Role Management
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Permission</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/roles`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Manage Roles</TableCell>
+          <TableCell>Create new role</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/roles/list`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Auth Required</TableCell>
+          <TableCell>List all roles</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/roles/update`</TableCell>
+          <TableCell>PUT</TableCell>
+          <TableCell>Manage Roles</TableCell>
+          <TableCell>Update role settings</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/roles/delete`</TableCell>
+          <TableCell>DELETE</TableCell>
+          <TableCell>Manage Roles</TableCell>
+          <TableCell>Delete role</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/roles/assign`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Assign Roles</TableCell>
+          <TableCell>Assign role to user</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/roles/remove`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Assign Roles</TableCell>
+          <TableCell>Remove role from user</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+  </TabContent>
+
+  <TabContent id="moderation">
+    ## Moderation
+
+    Moderate users and manage server discipline.
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Permission</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/moderation/kick`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Kick Users</TableCell>
+          <TableCell>Kick user from server</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/moderation/ban`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Ban Users</TableCell>
+          <TableCell>Ban user from server</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/moderation/unban`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Ban Users</TableCell>
+          <TableCell>Unban user</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/moderation/bans`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Ban Users</TableCell>
+          <TableCell>List all server bans</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+  </TabContent>
+
+  <TabContent id="server">
+    ## Server Management
+
+    Configure server settings and integrations.
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Permission</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/server/icon`</TableCell>
+          <TableCell>POST</TableCell>
+          <TableCell>Manage Server</TableCell>
+          <TableCell>Upload server icon</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/server/config`</TableCell>
+          <TableCell>PUT</TableCell>
+          <TableCell>Manage Server</TableCell>
+          <TableCell>Update server configuration</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+    ### Tenor GIF Integration
+
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Endpoint</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Description</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>`/tenor/search`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Search Tenor GIFs</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/tenor/trending`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Get trending GIFs</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>`/tenor/categories`</TableCell>
+          <TableCell>GET</TableCell>
+          <TableCell>Get GIF categories</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+
+  </TabContent>
+</Tabs>
+
+## Authentication
+
+Most endpoints require authentication. Include the token in the `Authorization` header:
+
+```
+Authorization: Bearer <your-token>
+```
+
+## Rate Limiting
+
+The server implements rate limiting on different endpoint categories:
+
+-   **Auth endpoints**: Limited login/join attempts
+-   **Message endpoints**: Prevents message spam
+-   **Invite endpoints**: Controls invite creation
+-   **Global endpoints**: General rate limiting for all other endpoints
+
+## Response Format
+
+API responses follow a consistent JSON structure:
+
+```json
+// Success Response
+{
+  "success": true,
+  "data": { /* Response data */ }
+}
+
+// Error Response
+{
+  "success": false,
+  "error": "Error message description"
+}
+```
+
+## WebSocket Events
+
+Real-time communication uses WebSocket connections with these event types:
+
+### Connection & User Status Events
+
+-   `online_users` - List of currently online users
+-   `user_status` - User online/offline status changes
+
+### Message Events
+
+-   `new_message` - New chat messages posted to channels
+-   `message_reply` - Replies to existing messages
+-   `message_deleted` - Message deletion notifications
+-   `message_edited` - Message edit notifications
+-   `message_pinned` - Message pinned to channel
+-   `message_unpinned` - Message unpinned from channel
+-   `user_tagged` - User mentioned/tagged in a message
+
+### Channel Events
+
+-   `group_created` - New channel group created
+-   `channel_created` - New channel created
+-   `channel_deleted` - Channel removed
+-   `channel_update` - Channel settings modified
+-   `channel_permission_updated` - Channel permissions modified
+-   `channel_permission_deleted` - Channel permissions removed
+
+### Role Events
+
+-   `role_created` - New role created
+-   `role_updated` - Role settings modified
+-   `role_deleted` - Role removed
+-   `role_assigned` - Role assigned to user
+-   `role_removed` - Role removed from user
+
+### User Events
+
+-   `user_updated` - User information changed
+-   `user_profile_updated` - User profile/avatar updated
+-   `user_left` - User left the server
+
+### Server Events
+
+-   `server_icon_updated` - Server icon/avatar changed
+-   `server_config_updated` - Server configuration modified
+
+### Voice Chat Events
+
+-   `user_joined_voice` - User joined voice channel
+-   `user_left_voice` - User left voice channel
+-   `voice_state_update` - Voice state changes (mute/deafen)
+-   `speaking_update` - Voice activity detection updates
+
+### WebRTC Events
+
+-   `webrtc_config` - WebRTC configuration for voice chat
+-   `create_webrtc_offer` - WebRTC connection offer
+-   `webrtc_answer` - WebRTC connection answer
+-   `webrtc_ice_candidate` - ICE candidate exchange
+-   `webrtc_connection_status` - WebRTC connection status updates
+-   `connection_quality_update` - Voice connection quality metrics
+
+<Callout type="tip">
+    For detailed request/response schemas and examples, refer to the individual
+    endpoint documentation.
+</Callout>

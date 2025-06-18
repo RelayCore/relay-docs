@@ -1,0 +1,526 @@
+---
+title: Relay Features
+description: Discover the powerful features that make Relay a complete self-hosted chat solution
+---
+
+Relay offers a comprehensive set of features designed for modern team communication while maintaining complete control over your data through self-hosting.
+
+## Core Communication Features
+
+<FeatureGrid>
+    <FeatureCard
+        title="Real-time Messaging"
+        description="Instant messaging with WebSocket connections for lightning-fast communication across all connected users."
+        icon={<MessageSquare className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="Voice Chat"
+        description="High-quality voice communication with WebRTC technology, push-to-talk, and voice activation detection."
+        icon={<Mic className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="File Sharing"
+        description="Share images, documents, and other files with automatic thumbnail generation and organized attachment management."
+        icon={<Paperclip className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="Channel Organization"
+        description="Organize conversations with customizable channels and groups, supporting both text and voice communication."
+        icon={<Hash className="h-6 w-6 text-positive" />}
+    />
+</FeatureGrid>
+
+## Advanced Messaging
+
+### Rich Message Features
+
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHead>Feature</TableHead>
+            <TableHead>Description</TableHead>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableCell>**Message Replies**</TableCell>
+            <TableCell>
+                Reply to specific messages to maintain conversation context
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**Message Editing**</TableCell>
+            <TableCell>
+                Edit your messages after sending with edit history tracking
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**Message Pinning**</TableCell>
+            <TableCell>
+                Pin important messages to channels for easy reference
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**User Mentions**</TableCell>
+            <TableCell>
+                Tag users with @ mentions and receive notifications
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**Message Search**</TableCell>
+            <TableCell>
+                Full-text search across all messages with advanced filtering
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**GIF Integration**</TableCell>
+            <TableCell>
+                Built-in Tenor GIF search and sharing capabilities
+            </TableCell>
+        </TableRow>
+    </TableBody>
+</Table>
+
+### Message Management
+
+<List>
+    <ListItem>
+        **Message History**: Complete message history with efficient pagination
+    </ListItem>
+    <ListItem>
+        **Message Deletion**: Remove messages with proper permission controls
+    </ListItem>
+    <ListItem>
+        **Threaded Conversations**: Reply chains for organized discussions
+    </ListItem>
+    <ListItem>
+        **Message Reactions**: React to messages with emoji (coming soon)
+    </ListItem>
+</List>
+
+## Voice Communication
+
+### Audio Features
+
+<Tabs defaultTab="voice-quality">
+  <TabList>
+    <TabTrigger id="voice-quality">Voice Quality</TabTrigger>
+    <TabTrigger id="voice-controls">Voice Controls</TabTrigger>
+    <TabTrigger id="voice-management">Management</TabTrigger>
+  </TabList>
+
+{" "}
+
+<TabContent id="voice-quality">
+    <List>
+        <ListItem>
+            **WebRTC Technology**: High-quality, low-latency voice communication
+        </ListItem>
+        <ListItem>
+            **Adaptive Bitrate**: Automatic quality adjustment based on network
+            conditions
+        </ListItem>
+        <ListItem>
+            **Echo Cancellation**: Built-in audio processing for clear
+            communication
+        </ListItem>
+        <ListItem>
+            **Connection Quality Monitoring**: Real-time connection status and
+            quality metrics
+        </ListItem>
+    </List>
+</TabContent>
+
+{" "}
+
+<TabContent id="voice-controls">
+    <List>
+        <ListItem>**Push-to-Talk**: Hold a key to transmit audio</ListItem>
+        <ListItem>
+            **Voice Activation**: Automatic transmission based on voice
+            detection
+        </ListItem>
+        <ListItem>
+            **Adjustable Threshold**: Customize voice activation sensitivity
+        </ListItem>
+        <ListItem>
+            **Mute/Deafen Controls**: Individual input and output audio controls
+        </ListItem>
+        <ListItem>
+            **Volume Controls**: Separate input and output volume adjustment
+        </ListItem>
+    </List>
+</TabContent>
+
+  <TabContent id="voice-management">
+    <List>
+        <ListItem>**Device Selection**: Choose specific input and output audio devices</ListItem>
+        <ListItem>**Voice Channel Rooms**: Multiple simultaneous voice channels</ListItem>
+        <ListItem>**Participant Management**: See who's in voice channels and their status</ListItem>
+        <ListItem>**Speaking Indicators**: Visual feedback for active speakers</ListItem>
+    </List>
+  </TabContent>
+</Tabs>
+
+## User Management & Security
+
+### Authentication & Identity
+
+<FeatureGrid>
+    <FeatureCard
+        title="Cryptographic Security"
+        description="Ed25519 key pairs for secure authentication without traditional passwords."
+        icon={<Key className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="Invite System"
+        description="Controlled server access through invite codes with expiration and usage limits."
+        icon={<UserPlus className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="Role-Based Permissions"
+        description="Granular permission system with customizable roles and per-channel permissions."
+        icon={<Shield className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="Multi-Server Support"
+        description="Connect to multiple Relay servers simultaneously with unique identities."
+        icon={<Server className="h-6 w-6 text-positive" />}
+    />
+</FeatureGrid>
+
+### Permission System
+
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHead>Permission Type</TableHead>
+            <TableHead>Capabilities</TableHead>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableCell>**Server Management**</TableCell>
+            <TableCell>
+                Configure server settings, upload server icon, manage global
+                configuration
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**User Moderation**</TableCell>
+            <TableCell>
+                Kick users, ban/unban users, manage user roles and permissions
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**Channel Management**</TableCell>
+            <TableCell>
+                Create, edit, delete channels and groups, manage channel
+                permissions
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**Role Management**</TableCell>
+            <TableCell>
+                Create, modify, delete roles, assign roles to users
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**Invite Management**</TableCell>
+            <TableCell>
+                Create invite codes, manage existing invites, set expiration and
+                limits
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**Message Permissions**</TableCell>
+            <TableCell>
+                Send messages, manage own messages, moderate others' messages
+            </TableCell>
+        </TableRow>
+    </TableBody>
+</Table>
+
+## Server Administration
+
+### Moderation Tools
+
+<List>
+    <ListItem>**User Kicks**: Temporarily remove disruptive users</ListItem>
+    <ListItem>
+        **User Bans**: Permanently or temporarily ban users with reason tracking
+    </ListItem>
+    <ListItem>
+        **Ban Management**: View, edit, and remove existing bans
+    </ListItem>
+    <ListItem>**Message Moderation**: Delete inappropriate messages</ListItem>
+    <ListItem>
+        **Channel Moderation**: Control access to specific channels
+    </ListItem>
+</List>
+
+### Server Configuration
+
+<Tabs defaultTab="server-settings">
+  <TabList>
+    <TabTrigger id="server-settings">Settings</TabTrigger>
+    <TabTrigger id="server-monitoring">Monitoring</TabTrigger>
+    <TabTrigger id="server-maintenance">Maintenance</TabTrigger>
+  </TabList>
+
+{" "}
+
+<TabContent id="server-settings">
+    <List>
+        <ListItem>
+            **Server Metadata**: Configure server name, description, and icon
+        </ListItem>
+        <ListItem>
+            **Rate Limiting**: Built-in protection against spam and abuse
+        </ListItem>
+        <ListItem>
+            **File Upload Limits**: Configurable attachment size and type
+            restrictions
+        </ListItem>
+        <ListItem>
+            **Tenor Integration**: Optional GIF search and sharing capabilities
+        </ListItem>
+        <ListItem>
+            **CORS Configuration**: Cross-origin resource sharing settings
+        </ListItem>
+    </List>
+</TabContent>
+
+{" "}
+
+<TabContent id="server-monitoring">
+    <List>
+        <ListItem>
+            **Connection Logging**: Track user connections and authentication
+            attempts
+        </ListItem>
+        <ListItem>
+            **Performance Metrics**: Monitor server resource usage and
+            performance
+        </ListItem>
+        <ListItem>
+            **Error Tracking**: Comprehensive error logging and reporting
+        </ListItem>
+        <ListItem>
+            **Attachment Statistics**: Track file upload usage and storage
+        </ListItem>
+    </List>
+</TabContent>
+
+  <TabContent id="server-maintenance">
+    <List>
+        <ListItem>**Database Migrations**: Automatic schema updates and data migration</ListItem>
+        <ListItem>**Backup Support**: SQLite database backup and restoration</ListItem>
+        <ListItem>**Cache Management**: HTTP response caching for improved performance</ListItem>
+        <ListItem>**First-Time Setup**: Automatic owner invite generation for new servers</ListItem>
+    </List>
+  </TabContent>
+</Tabs>
+
+## Client Application Features
+
+### Cross-Platform Desktop App
+
+<FeatureGrid>
+    <FeatureCard
+        title="Modern Interface"
+        description="Clean, intuitive interface built with modern web technologies and native desktop integration."
+        icon={<Monitor className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="Theme Customization"
+        description="Light, dark, and system themes with customizable accent colors for personalization."
+        icon={<Palette className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="Keyboard Shortcuts"
+        description="Comprehensive keyboard shortcuts for power users with customizable key bindings."
+        icon={<Keyboard className="h-6 w-6 text-positive" />}
+    />
+</FeatureGrid>
+
+### User Experience
+
+<List>
+    <ListItem>
+        **Drag & Drop**: Intuitive file sharing through drag and drop
+    </ListItem>
+    <ListItem>
+        **Auto-Updates**: Seamless application updates (when available)
+    </ListItem>
+    <ListItem>
+        **System Integration**: Native notifications and system tray integration
+    </ListItem>
+    <ListItem>
+        **Window Management**: Custom or traditional window controls
+    </ListItem>
+    <ListItem>
+        **Profile Management**: Global profile with per-server identity
+        management
+    </ListItem>
+</List>
+
+## Technical Features
+
+### Performance & Reliability
+
+<Table>
+    <TableHeader>
+        <TableRow>
+            <TableHead>Feature</TableHead>
+            <TableHead>Benefit</TableHead>
+        </TableRow>
+    </TableHeader>
+    <TableBody>
+        <TableRow>
+            <TableCell>**WebSocket Connections**</TableCell>
+            <TableCell>
+                Real-time, low-latency communication with automatic reconnection
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**SQLite Database**</TableCell>
+            <TableCell>
+                Fast, reliable, serverless database with ACID transactions
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**HTTP Caching**</TableCell>
+            <TableCell>
+                Intelligent caching strategies to reduce bandwidth and improve
+                performance
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**Rate Limiting**</TableCell>
+            <TableCell>
+                Multiple rate limiting strategies to prevent abuse and ensure
+                stability
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell>**Error Recovery**</TableCell>
+            <TableCell>
+                Automatic retry mechanisms and graceful error handling
+            </TableCell>
+        </TableRow>
+    </TableBody>
+</Table>
+
+### Self-Hosting Benefits
+
+<Callout type="info">
+    Relay is designed for self-hosting, giving you complete control over your
+    communication infrastructure.
+</Callout>
+
+<List>
+    <ListItem>
+        **Data Ownership**: Your messages, files, and user data remain on your
+        servers
+    </ListItem>
+    <ListItem>
+        **Privacy Control**: No third-party data collection or tracking
+    </ListItem>
+    <ListItem>
+        **Customization**: Modify and extend the platform to meet your specific
+        needs
+    </ListItem>
+    <ListItem>
+        **Cost Control**: No per-user fees or subscription costs
+    </ListItem>
+    <ListItem>
+        **Network Control**: Deploy on internal networks or public cloud
+        infrastructure
+    </ListItem>
+    <ListItem>
+        **Compliance**: Meet specific regulatory or organizational requirements
+    </ListItem>
+</List>
+
+## Integration & APIs
+
+### Developer Features
+
+<FeatureGrid>
+    <FeatureCard
+        title="RESTful API"
+        description="Comprehensive REST API for building integrations, bots, and custom clients."
+        icon={<Code className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="WebSocket API"
+        description="Real-time event streaming for live integrations and monitoring tools."
+        icon={<Zap className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="Open Source"
+        description="Fully open-source codebase available for inspection, modification, and contribution."
+        icon={<Github className="h-6 w-6 text-positive" />}
+    />
+    <FeatureCard
+        title="Docker Support"
+        description="Pre-built Docker containers for easy deployment and scaling."
+        icon={<Package className="h-6 w-6 text-positive" />}
+    />
+</FeatureGrid>
+
+### API Capabilities
+
+<List>
+    <ListItem>
+        **Message Management**: Send, edit, delete, and search messages
+        programmatically
+    </ListItem>
+    <ListItem>
+        **User Management**: Manage users, roles, and permissions through API
+        calls
+    </ListItem>
+    <ListItem>
+        **Channel Operations**: Create and manage channels and groups via API
+    </ListItem>
+    <ListItem>
+        **Real-time Events**: Subscribe to live events through WebSocket
+        connections
+    </ListItem>
+    <ListItem>
+        **File Operations**: Upload and manage attachments through REST
+        endpoints
+    </ListItem>
+</List>
+
+## Getting Started
+
+Ready to experience these features? Choose your path:
+
+<FeatureGrid>
+    <FeatureCard
+        title="Download Client"
+        description="Get the desktop application and connect to a Relay server."
+        icon={<Download className="h-6 w-6 text-positive" />}
+        link="/docs/client/getting-started"
+    />
+    <FeatureCard
+        title="Host a Server"
+        description="Set up your own Relay server for complete control."
+        icon={<Server className="h-6 w-6 text-positive" />}
+        link="/docs/server/setup"
+    />
+    <FeatureCard
+        title="API Documentation"
+        description="Explore the API for integrations and custom development."
+        icon={<BookOpen className="h-6 w-6 text-positive" />}
+        link="/docs/server/api"
+    />
+    <FeatureCard
+        title="Configure Settings"
+        description="Customize your Relay experience with available settings."
+        icon={<Settings className="h-6 w-6 text-positive" />}
+        link="/docs/client/settings"
+    />
+</FeatureGrid>

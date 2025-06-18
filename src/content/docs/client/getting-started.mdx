@@ -1,0 +1,309 @@
+---
+title: Getting Started with Relay Client
+description: Download, install, and set up the Relay client to connect to your first chat server
+---
+
+The Relay client is a modern desktop chat application built with Electron. It connects to self-hosted Relay servers, giving you complete control over your chat experience while maintaining a sleek, user-friendly interface.
+
+## Download and Installation
+
+### System Requirements
+
+<List>
+    <ListItem>**Windows**: Windows 10 or later (64-bit)</ListItem>
+    <ListItem>**Linux**: Ubuntu 18.04+, Debian 10+, or equivalent</ListItem>
+</List>
+
+### Download Options
+
+<Tabs defaultTab="releases">
+  <TabList>
+    <TabTrigger id="releases">Pre-built Releases</TabTrigger>
+    <TabTrigger id="source">Build from Source</TabTrigger>
+  </TabList>
+
+  <TabContent id="releases">
+    ### Download Pre-built Application
+
+    1. Visit the [Relay Client Releases](https://github.com/RelayCore/relay-client/releases) page
+    2. Download the appropriate installer for your operating system:
+       - **Windows**: `Relay-Setup-x.x.x.exe`
+       - **Linux**: `Relay-x.x.x.AppImage` or `relay_x.x.x_amd64.deb`
+
+    ### Installation Steps
+
+    <Tabs defaultTab="windows">
+      <TabList>
+        <TabTrigger id="windows">Windows</TabTrigger>
+        <TabTrigger id="linux">Linux</TabTrigger>
+      </TabList>
+
+      <TabContent id="windows">
+        <List type="ordered">
+          <ListItem>Run the downloaded `Relay-Setup-x.x.x.exe` file</ListItem>
+          <ListItem>Follow the installation wizard prompts</ListItem>
+          <ListItem>Launch Relay from the Start Menu or Desktop shortcut</ListItem>
+        </List>
+
+        <Callout type="info">
+          Windows may show a security warning for unsigned applications. Click "More info" and then "Run anyway" to proceed with installation.
+        </Callout>
+      </TabContent>
+
+      <TabContent id="linux">
+        **For AppImage:**
+        <List type="ordered">
+          <ListItem>Make the AppImage executable: `chmod +x Relay-x.x.x.AppImage`</ListItem>
+          <ListItem>Run the AppImage: `./Relay-x.x.x.AppImage`</ListItem>
+        </List>
+
+        **For Debian/Ubuntu (.deb):**
+        <List type="ordered">
+          <ListItem>Install the package: `sudo dpkg -i relay_x.x.x_amd64.deb`</ListItem>
+          <ListItem>Fix dependencies if needed: `sudo apt-get install -f`</ListItem>
+          <ListItem>Launch from the applications menu or run `relay` in terminal</ListItem>
+        </List>
+      </TabContent>
+    </Tabs>
+
+  </TabContent>
+
+  <TabContent id="source">
+    ### Build from Source
+
+    Building from source gives you the latest features and allows for customization.
+
+    #### Prerequisites
+
+    <List>
+      <ListItem>[Node.js](https://nodejs.org/) (version 18.x or later)</ListItem>
+      <ListItem>[Git](https://git-scm.com/)</ListItem>
+      <ListItem>One of: npm, [yarn](https://yarnpkg.com/), or [pnpm](https://pnpm.io/)</ListItem>
+    </List>
+
+    #### Build Steps
+
+    1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/RelayCore/relay-client.git
+    cd relay-client
+    ```
+
+    2. **Install dependencies:**
+
+    <PackageManagerCode
+      npm="npm install"
+      yarn="yarn install"
+      pnpm="pnpm install"
+    />
+    3. **Start development mode:**
+
+    <PackageManagerCode
+      npm="npm start"
+      yarn="yarn start"
+      pnpm="pnpm start"
+    />
+    4. **Build for production (optional):**
+
+    <PackageManagerCode
+      npm="npm run make"
+      yarn="yarn make"
+      pnpm="pnpm make"
+    />
+      pnpm="pnpm make"
+    />
+
+    <Callout type="info">
+      The built application will be available in the `out/` directory after running the make command.
+    </Callout>
+
+  </TabContent>
+</Tabs>
+
+## Initial Setup
+
+### First Launch
+
+When you first launch Relay, you'll see the home screen with no servers connected. The interface includes:
+
+-   **Sidebar**: Navigation between servers and settings
+-   **Main area**: Server list and connection status
+-   **Breadcrumb**: Current location indicator
+
+### Joining Your First Server
+
+To connect to a Relay server, you'll need:
+
+<List>
+    <ListItem>
+        **Server URL**: The address of the Relay server (e.g.,
+        `http://192.168.1.100:8080`)
+    </ListItem>
+    <ListItem>
+        **Username**: Your desired username (must be unique on the server)
+    </ListItem>
+    <ListItem>**Nickname**: Your display name (can be changed later)</ListItem>
+    <ListItem>
+        **Invite Code**: A valid invite code from the server administrator
+    </ListItem>
+</List>
+
+#### Step-by-Step Connection Process
+
+<List type="ordered">
+    <ListItem>
+        **Click "Join Server"** button on the home screen or in the sidebar
+    </ListItem>
+    <ListItem>
+        **Fill in the connection details:** - **Server URL**: Enter the complete
+        URL including protocol (http:// or https://) - **Username**: Choose a
+        unique identifier (alphanumeric characters recommended) - **Nickname**:
+        Your display name that others will see - **Invite Code**: Paste the
+        invite code provided by the server admin
+    </ListItem>
+    <ListItem>**Click "Join Server"** to initiate the connection</ListItem>
+    <ListItem>
+        **Wait for connection**: The client will generate cryptographic keys and
+        authenticate with the server
+    </ListItem>
+</List>
+
+<Callout type="success">
+    Once connected successfully, you'll be automatically redirected to the
+    server's main channel and can start chatting immediately!
+</Callout>
+
+### Understanding Server Connection
+
+#### Connection Status Indicators
+
+-   **Green dot**: Server is online and connected
+-   **Red dot**: Server is offline or unreachable
+-   **"Connecting..."**: Attempting to establish connection
+-   **"Retrying"**: Automatically retrying failed connections
+
+#### Automatic Features
+
+<FeatureGrid>
+    <FeatureCard
+        title="Key Generation"
+        description="Each server connection uses unique Ed25519 cryptographic keys for secure authentication."
+        icon={<Key className="h-5 w-5 text-positive" />}
+    />
+    <FeatureCard
+        title="Profile Sync"
+        description="Your profile picture is automatically uploaded to new servers if you have one set."
+        icon={<User className="h-5 w-5 text-positive" />}
+    />
+    <FeatureCard
+        title="WebSocket Connection"
+        description="Real-time messaging is established through secure WebSocket connections."
+        icon={<Zap className="h-5 w-5 text-positive" />}
+    />
+</FeatureGrid>
+
+## Managing Multiple Servers
+
+### Server List Organization
+
+Relay supports connecting to multiple servers simultaneously:
+
+-   **Drag and drop** servers in the sidebar to reorder them
+-   **Server icons** display custom server branding when available
+-   **Connection status** is shown for each server individually
+
+### Server Management Actions
+
+Right-click on any server in the sidebar to access:
+
+<List>
+    <ListItem>
+        **Export Identity**: Save your cryptographic identity for backup
+    </ListItem>
+    <ListItem>**Retry Connection**: Manually retry failed connections</ListItem>
+    <ListItem>**Leave Server**: Disconnect and remove the server</ListItem>
+</List>
+
+## Troubleshooting Common Issues
+
+### Connection Problems
+
+<Tabs defaultTab="url-issues">
+  <TabList>
+    <TabTrigger id="url-issues">URL Issues</TabTrigger>
+    <TabTrigger id="network-issues">Network Issues</TabTrigger>
+    <TabTrigger id="invite-issues">Invite Code Issues</TabTrigger>
+  </TabList>
+
+  <TabContent id="url-issues">
+    **Incorrect Server URL Format:**
+    - Ensure you include the protocol: `http://` or `https://`
+    - Include the port if not using standard ports: `http://server.com:8080`
+    - Verify the server address with your administrator
+
+    **Common URL Examples:**
+    ```
+    http://localhost:8080          # Local server
+    http://192.168.1.100:8080     # Local network server
+    https://chat.example.com      # Public server with SSL
+    ```
+
+  </TabContent>
+
+  <TabContent id="network-issues">
+    **Firewall/Network Blocking:**
+    - Check if your firewall allows the Relay client
+    - Verify network connectivity to the server
+    - Try connecting from a different network to isolate issues
+
+    **Corporate Networks:**
+    - WebSocket connections may be blocked
+    - Contact your IT administrator about allowing Relay traffic
+    - Consider using HTTPS servers which are more likely to work
+
+  </TabContent>
+
+  <TabContent id="invite-issues">
+    **Invalid Invite Code:**
+    - Verify the code was copied correctly (case-sensitive)
+    - Check if the invite has expired
+    - Confirm the invite hasn't reached its usage limit
+    - Request a new invite from the server administrator
+  </TabContent>
+</Tabs>
+
+### Performance Tips
+
+<List>
+    <ListItem>**Close unused servers** to reduce memory usage</ListItem>
+    <ListItem>
+        **Limit concurrent connections** if experiencing slowdowns
+    </ListItem>
+    <ListItem>
+        **Update regularly** for performance improvements and bug fixes
+    </ListItem>
+</List>
+
+## Next Steps
+
+Once you've successfully connected to your first server:
+
+<List>
+    <ListItem>
+        [Explore Client Features](/docs/client-features) - Learn about channels,
+        messaging, and voice chat
+    </ListItem>
+    <ListItem>
+        [Customize Settings](/docs/client/settings) - Personalize your Relay
+        experience
+    </ListItem>
+    <ListItem>
+        [Manage Identities](/docs/client/identity-management) - Backup and
+        restore your server identities
+    </ListItem>
+</List>
+
+<Callout type="info">
+    Need help setting up a Relay server? Check out our [Server Setup
+    Guide](/docs/server-setup) to host your own chat server.
+</Callout>

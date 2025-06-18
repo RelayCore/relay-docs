@@ -1,0 +1,166 @@
+---
+title: Getting Started with Relay Server
+description: Download, install, and set up your own Relay server for secure, self-hosted chat
+---
+
+The Relay Server is a high-performance backend application built with Go that provides real-time communication capabilities. Host your own chat server with complete control over your data and user experience.
+
+## Download and Installation
+
+### System Requirements
+
+<List>
+    <ListItem>
+        **Linux**: Ubuntu 18.04+, Debian 10+, CentOS 7+, or equivalent
+    </ListItem>
+    <ListItem>**Windows**: Windows Server 2019+ or Windows 10+</ListItem>
+    <ListItem>**RAM**: 128MB minimum</ListItem>
+    <ListItem>
+        **Storage**: 100MB available space minimum, much higher recommended for
+        attachments
+    </ListItem>
+</List>
+
+### Download Options
+
+<Tabs defaultTab="releases">
+  <TabList>
+    <TabTrigger id="releases">Pre-built Releases</TabTrigger>
+    <TabTrigger id="source">Build from Source</TabTrigger>
+  </TabList>
+
+  <TabContent id="releases">
+    ### Download Pre-built Server
+
+    1. Visit the [Relay Server Releases](https://github.com/RelayCore/relay-server/releases) page
+    2. Download the appropriate binary for your operating system:
+       - **Linux (x64)**: `relay-server-linux-amd64`
+       - **Windows (x64)**: `relay-server-windows-amd64.exe`
+
+    ### Installation Steps
+
+    <Tabs defaultTab="linux">
+      <TabList>
+        <TabTrigger id="linux">Linux</TabTrigger>
+        <TabTrigger id="windows">Windows</TabTrigger>
+      </TabList>
+
+      <TabContent id="linux">
+        <List type="ordered">
+          <ListItem>Download the binary: `wget https://github.com/RelayCore/relay-server/releases/latest/download/relay-server-linux-amd64`</ListItem>
+          <ListItem>Make it executable: `chmod +x relay-server-linux-amd64`</ListItem>
+          <ListItem>Move to system path: `sudo mv relay-server-linux-amd64 /usr/local/bin/relay-server`</ListItem>
+          <ListItem>Verify installation: `relay-server --version`</ListItem>
+        </List>
+
+        <Callout type="info">
+          For production deployments, consider creating a dedicated user account and systemd service for the server.
+        </Callout>
+      </TabContent>
+
+      <TabContent id="windows">
+        <List type="ordered">
+          <ListItem>Download `relay-server-windows-amd64.exe`</ListItem>
+          <ListItem>Create a folder: `C:\relay-server\`</ListItem>
+          <ListItem>Move the executable to: `C:\relay-server\relay-server.exe`</ListItem>
+          <ListItem>Open Command Prompt as Administrator</ListItem>
+          <ListItem>Navigate to the folder: `cd C:\relay-server`</ListItem>
+          <ListItem>Test the server: `relay-server.exe --version`</ListItem>
+        </List>
+      </TabContent>
+    </Tabs>
+
+  </TabContent>
+
+  <TabContent id="source">
+    ### Build from Source
+
+    Building from source gives you the latest features and allows for customization.
+
+    #### Prerequisites
+
+    <List>
+      <ListItem>[Go](https://golang.org/dl/) (version 1.19 or later)</ListItem>
+      <ListItem>[Git](https://git-scm.com/)</ListItem>
+      <ListItem>C compiler (gcc on Linux, Visual Studio Build Tools on Windows)</ListItem>
+    </List>
+
+    #### Build Steps
+
+    1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/RelayCore/relay-server.git
+    cd relay-server
+    ```
+
+    2. **Install dependencies:**
+    ```bash
+    go mod download
+    ```
+
+    3. **Build the server:**
+    ```bash
+    go build -o relay-server ./cmd/server
+    ```
+
+    4. **Verify the build:**
+    ```bash
+    ./relay-server --version
+    ```
+
+    <Callout type="info">
+      The built binary will be created in the current directory. You can move it to your preferred location.
+    </Callout>
+
+  </TabContent>
+</Tabs>
+
+## Initial Configuration
+
+### Configuration File
+
+Create a configuration file to customize your server settings:
+
+```yaml
+# config.yaml
+name: "My Relay Server"
+description: "A secure chat server"
+allow_invite: true
+max_users: 100
+max_file_size: 50 # in MB
+max_attachments: 10
+icon: "server-icon.png"
+port: ":8080"
+tenor_api_key: "" # Optional: for GIF support
+```
+
+## First Launch
+
+### Starting the Server
+
+```bash
+go run ./cmd/server/main.go
+```
+
+## Next Steps
+
+Once your server is running successfully:
+
+<List>
+    <ListItem>
+        [Docker Deployment](/docs/server/docker) - Deploy using Docker
+        containers
+    </ListItem>
+    <ListItem>
+        [User Management](/docs/server/user-management) - Manage users and
+        permissions
+    </ListItem>
+    <ListItem>
+        [API Reference](/docs/server/api-reference) - Explore the server API
+    </ListItem>
+</List>
+
+<Callout type="info">
+    Need help connecting clients? Check out our [Client Setup
+    Guide](/docs/client/getting-started) to connect your first users.
+</Callout>
