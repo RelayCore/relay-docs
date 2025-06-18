@@ -9,7 +9,7 @@ const withMDX = createMDX({
     },
 });
 
-const basePath = "/Relay";
+const basePath = "/relay-docs";
 
 const nextConfig: NextConfig = {
     output: "export",
