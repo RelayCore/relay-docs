@@ -206,7 +206,10 @@ export function DocSidebar({ title }: { title: string }) {
                                     On this page
                                 </h4>
                             </div>
-                            <nav className="p-1">
+                            <nav
+                                className="p-1 overflow-y-auto"
+                                style={{ maxHeight: "calc(100vh - 550px)" }}
+                            >
                                 <ul className="space-y-0.5">
                                     {/* Title as top link */}
                                     <li>
